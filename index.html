@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="libraries/bootstrap.css">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Tic Tac Toe</h1>
+    </header>
+    <div class="main">
+        <div class="scoreboard">
+            <div class="badge" id="user">User</div>
+            <div class="badge" id="comp">Computer</div>
+            <span id="user-score">0</span>:<span id="comp-score">0</span>
+        </div>
+        <div class="dashboard">
+            <div class="button" id="left">
+                <button class="btn btn-lg btn-block btn-primary" id="reset">New Game</button>
+            </div>
+            <div class="choice" id="right">
+                <p>Choose A Player :</p>
+                <div class="button">
+                    <button class="btn btn-lg btn-block btn-success" id="xchoice">X Player</button>
+                </div>
+                <div class="button">
+                    <button class="btn btn-lg btn-block btn-success" id="ochoice">O Player</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-board">
+            <div class="box" id="0"></div>
+            <div class="box" id="1"></div>
+            <div class="box" id="2"></div>
+            <div class="box" id="3"></div>
+            <div class="box" id="4"></div>
+            <div class="box" id="5"></div>
+            <div class="box" id="6"></div>
+            <div class="box" id="7"></div>
+            <div class="box" id="8"></div>
+        </div>
+    </div>
+    <div class="winner">
+        <p></p>
+    </div>
+    <script src="app.js"></script>
+    <!-- <script src="libraries/bootstrap.bundle.js"></script>
+    <script src="libraries/jquery-3.3.1.js"></script> -->
+</body>
+
+</html>
