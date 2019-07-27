@@ -26,27 +26,27 @@ main();
 
 xplay.addEventListener('click', () => {
 	oplay.disabled = true;
-	player1 = 'X';
-	player2 = 'O';
+	player2 = 'X';
+	player1 = 'O';
 
-	initiateGame(player1, player2);
+	initiateGame(player2, player1);
 	moveCount++;
 	let val = findBestMove(values);
 	//console.log(val);
-	boxes[val].innerHTML = player2;
-	values[val] = player2;
+	boxes[val].innerHTML = player1;
+	values[val] = player1;
 });
 
 oplay.addEventListener('click', () => {
 	xplay.disabled = true;
-	player2 = 'X';
-	player1 = 'O';
-	initiateGame(player1, player2);
+	player1 = 'X';
+	player2 = 'O';
+	initiateGame(player2, player1);
 	moveCount++;
 	let val = findBestMove(values);
 	//console.log(val);
-	boxes[val].innerHTML = player2;
-	values[val] = player2;
+	boxes[val].innerHTML = player1;
+	values[val] = player1;
 });
 
 reset.addEventListener('click', () => {
@@ -80,13 +80,14 @@ function main() {
 	init();
 	boxes.forEach((box) => {
 		box.addEventListener('click', () => {
-			if (box.innerHTML === '' && player1 != '') {
+			if (box.innerHTML === '' && player2 != '') {
 				moveCount++;
-				box.innerHTML = player1;
-				values[parseInt(box.id)] = player1;
+				box.innerHTML = player2;
+				values[parseInt(box.id)] = player2;
+				console.log(values);
 				let val = findBestMove(values);
-				boxes[val].innerHTML = player2;
-				values[val] = player2;
+				boxes[val].innerHTML = player1;
+				values[val] = player1;
 
 				getResults();
 			}

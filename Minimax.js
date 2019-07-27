@@ -1,5 +1,5 @@
-var player = '';
-var opponent = '';
+var player = 'O';
+var opponent = 'X';
 var winningLine = [];
 
 (function() {
@@ -10,15 +10,15 @@ var winningLine = [];
 	winningLine.push([ 0, 4, 8 ]);
 	winningLine.push([ 2, 4, 6 ]);
 })();
-console.log(winningLine);
+//console.log(winningLine);
 
 function initiateGame(user, computer) {
-	player = user;
-	opponent = computer;
+	player = computer;
+	opponent = user;
 }
 
 function findBestMove(currentBoardState) {
-	let bestMove = -Infinity;
+	let bestMove = -1000;
 	let pos = -1;
 	//console.log(currentBoardState);
 	for (let i = 0; i < 9; i++) {
@@ -30,7 +30,6 @@ function findBestMove(currentBoardState) {
 
 			if (val > bestMove) {
 				bestMove = val;
-				console.log(val);
 				pos = i;
 			}
 		}
@@ -40,7 +39,6 @@ function findBestMove(currentBoardState) {
 
 function minimax(currentBoardState, depth, isMaximizer) {
 	let score = checkVictory(currentBoardState);
-	//console.log(score);
 	if (score == 10) {
 		return score - depth;
 	}
@@ -84,16 +82,22 @@ function checkVictory(currentBoardState) {
 	let winner = '';
 	for (let i = 0; i < winningLine.length; i++) {
 		line = winningLine[i];
+		//console.log(currentBoardState[line[0]]);
+		//console.log(currentBoardState[line[1]]);
+		//console.log(currentBoardState[line[2]]);
+		//console.log(line);
+		//console.log(i);
+
 		if (
-			currentBoardState[line[0]] == currentBoardState[line[1]] &&
-			currentBoardState[line[1]] == currentBoardState[line[2]] &&
+			currentBoardState[line[0]] === currentBoardState[line[1]] &&
+			currentBoardState[line[1]] === currentBoardState[line[2]] &&
 			currentBoardState[line[0]] != undefined
 		) {
 			winner = currentBoardState[line[0]];
 			break;
 		}
 	}
-	console.log(winner);
+	//console.log(winner);
 	if (winner == player) {
 		return 10;
 	}
@@ -107,7 +111,7 @@ function checkVictory(currentBoardState) {
 
 function isMoveLeft(currentBoardState) {
 	for (let i = 0; i < 9; i++) {
-		if (currentBoardState == '') {
+		if (currentBoardState[i] == '') {
 			return true;
 		}
 	}
