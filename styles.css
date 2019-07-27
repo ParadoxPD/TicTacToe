@@ -1,141 +1,138 @@
 @import url("https://fonts.googleapis.com/css?family=Asap:400,500,700&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-header>h1 {
-    background: white;
-    padding: 20px;
-    text-align: center;
-    font-family: Asap, sans-serif;
+header > h1 {
+	background: white;
+	padding: 20px;
+	text-align: center;
+	font-family: Asap, 'Roboto Condensed', sans-serif;
 }
 
 body {
-    background-color: #282c34;
-    text-align: center;
-
+	background-color: #282c34;
+	text-align: center;
 }
 
 .main {
-    display: inline-block;
-    text-align: center;
+	display: inline-block;
+	text-align: center;
 }
 
 .scoreboard {
-    margin: 20px auto;
-    padding: 15px 20px;
-    border: 3px solid white;
-    height: 100px;
-    width: 200px;
-    border-radius: 4px;
-    text-align: center;
-    font-weight: bold;
-    font-family: Asap, sans-serif;
-    color: aliceblue;
-    font-size: 50px;
-    position: relative;
+	margin: 20px auto;
+	padding: 15px 20px;
+	border: 3px solid white;
+	height: 100px;
+	width: 200px;
+	border-radius: 4px;
+	text-align: center;
+	font-weight: bold;
+	font-family: Asap, sans-serif;
+	color: aliceblue;
+	font-size: 50px;
+	position: relative;
 }
 
 .badge {
-    background: red;
-    font-size: 15px;
-    padding: 5px;
+	background: red;
+	font-size: 15px;
+	padding: 5px;
 }
 
 #user {
-    position: absolute;
-    top: 35px;
-    left: -18px;
+	position: absolute;
+	top: 35px;
+	left: -18px;
 }
 
 #comp {
-    position: absolute;
-    top: 35px;
-    right: -35px;
+	position: absolute;
+	top: 35px;
+	right: -35px;
 }
 
 .game-board {
-    width: 450px;
-    height: 450px;
-    margin: 0 auto;
-    background-color: #34495e;
-    color: #fff;
-    border: 6px solid #2c3e50;
-    border-radius: 10px;
-    display: grid;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+	width: 450px;
+	height: 450px;
+	margin: 0 auto;
+	background-color: #34495e;
+	color: #fff;
+	border: 6px solid #2c3e50;
+	border-radius: 10px;
+	display: grid;
+	grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
 
 .box {
-    border: 6px solid #2c3e50;
-    border-radius: 2px;
-    font-family: Asap, Helvetica;
-    font-weight: bold;
-    font-size: 4em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
+	border: 6px solid #2c3e50;
+	border-radius: 2px;
+	font-family: Asap, Helvetica;
+	font-weight: bold;
+	font-size: 4em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.3s ease;
 }
 
 .dashboard {
-    margin: 0 auto;
-    text-align: center;
+	margin: 0 auto;
+	text-align: center;
 }
 
-.choice>p {
-    font-family: Asap, sans-serif;
-    font-size: 20px;
-    padding: 0;
-    color: aliceblue;
+.choice > p {
+	font-family: Asap, sans-serif;
+	font-size: 20px;
+	padding: 0;
+	color: aliceblue;
 }
 
-.winner>p {
-    font-family: Asap, sans-serif;
-    font-size: 20px;
-    padding: 10px;
-    color: aliceblue;
+.winner > p {
+	font-family: Asap, sans-serif;
+	font-size: 20px;
+	padding: 10px;
+	color: aliceblue;
 }
 
 .choice {
-    margin-bottom: 5px;
-    border: 3px solid royalblue;
-    border-radius: 4px;
-    text-align: center;
+	margin-bottom: 5px;
+	border: 3px solid royalblue;
+	border-radius: 4px;
+	text-align: center;
 }
 
 .button {
-    display: inline-block;
-    padding: 15px 15px;
+	display: inline-block;
+	padding: 15px 15px;
 }
 
 #left,
 #right {
-    float: left;
+	float: left;
 }
 
 #reset {
-    margin-top: 38%;
+	margin-top: 38%;
 }
 
 .box:hover {
-    cursor: pointer;
-    background-color: #282c34;
-    transition: all 0.3s ease;
-
+	cursor: pointer;
+	background-color: #282c34;
+	transition: all 0.3s ease;
 }
 
 div {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 }
 
 .box-win {
-    transition: all 0.3s ease;
-    color: greenyellow;
+	transition: all 0.3s ease;
+	color: greenyellow;
 }
-

@@ -13,15 +13,6 @@ var values = [];
 var winner = '';
 var winningLine = [];
 
-const get = () => {
-	if (moveCount > 3) {
-		getResults();
-	}
-	if (moveCount == 9 && winner === '') {
-		winText.innerHTML = 'The game is a Draw';
-	}
-};
-
 main();
 
 xplay.addEventListener('click', () => {
@@ -44,7 +35,6 @@ oplay.addEventListener('click', () => {
 	initiateGame(player2, player1);
 	moveCount++;
 	let val = findBestMove(values);
-	//console.log(val);
 	boxes[val].innerHTML = player1;
 	values[val] = player1;
 });
@@ -81,20 +71,21 @@ function main() {
 	boxes.forEach((box) => {
 		box.addEventListener('click', () => {
 			if (box.innerHTML === '' && player2 != '') {
-				moveCount++;
+				moveCount += 2;
 				box.innerHTML = player2;
 				values[parseInt(box.id)] = player2;
-				console.log(values);
-				let val = findBestMove(values);
-				boxes[val].innerHTML = player1;
-				values[val] = player1;
-
-				getResults();
+				setTimeout(() => {
+					let val = findBestMove(values);
+					boxes[val].innerHTML = player1;
+					values[val] = player1;
+					getResults();
+					if (moveCount == 9 && winner == '') {
+						winText.innerHTML = 'The game is a Draw';
+					}
+				}, 300);
 			}
 		});
 	});
-
-	addEventListener('click', get);
 }
 
 function win(line) {
@@ -114,8 +105,6 @@ function win(line) {
 	body.parentNode.replaceChild(clone, body);
 	body = clone;
 	boxes = document.querySelectorAll('.box');
-
-	removeEventListener('click', get);
 }
 
 function getResults() {

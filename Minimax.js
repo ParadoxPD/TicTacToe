@@ -10,7 +10,6 @@ var winningLine = [];
 	winningLine.push([ 0, 4, 8 ]);
 	winningLine.push([ 2, 4, 6 ]);
 })();
-//console.log(winningLine);
 
 function initiateGame(user, computer) {
 	player = computer;
@@ -20,7 +19,6 @@ function initiateGame(user, computer) {
 function findBestMove(currentBoardState) {
 	let bestMove = -1000;
 	let pos = -1;
-	//console.log(currentBoardState);
 	for (let i = 0; i < 9; i++) {
 		if (currentBoardState[i] == undefined || currentBoardState[i] == '') {
 			currentBoardState[i] = player;
@@ -82,11 +80,6 @@ function checkVictory(currentBoardState) {
 	let winner = '';
 	for (let i = 0; i < winningLine.length; i++) {
 		line = winningLine[i];
-		//console.log(currentBoardState[line[0]]);
-		//console.log(currentBoardState[line[1]]);
-		//console.log(currentBoardState[line[2]]);
-		//console.log(line);
-		//console.log(i);
 
 		if (
 			currentBoardState[line[0]] === currentBoardState[line[1]] &&
@@ -97,7 +90,6 @@ function checkVictory(currentBoardState) {
 			break;
 		}
 	}
-	//console.log(winner);
 	if (winner == player) {
 		return 10;
 	}
