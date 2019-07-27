@@ -136,3 +136,28 @@ div {
 	transition: all 0.3s ease;
 	color: greenyellow;
 }
+
+@media screen and (max-width: 600px) {
+	.game-board {
+		width: 300px;
+		height: 300px;
+	}
+	.scoreboard {
+		margin: 10px auto;
+		padding: 10px 10px;
+		font-size: 30px;
+	}
+	.box {
+		font-size: 3em;
+	}
+	.button {
+		display: flex;
+		padding: 10px 10px;
+	}
+
+	.box:hover {
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+	}
+}

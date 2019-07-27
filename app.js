@@ -2,6 +2,8 @@ const reset = document.getElementById('reset');
 const xplay = document.getElementById('xchoice');
 const oplay = document.getElementById('ochoice');
 const winText = document.querySelector('.winner>p');
+const userScoreElement = document.getElementById('user-score');
+const compScoreElement = document.getElementById('comp-score');
 
 var boxes = document.querySelectorAll('.box');
 var body = document.querySelector('.game-board');
@@ -12,24 +14,27 @@ var moveCount = 0;
 var values = [];
 var winner = '';
 var winningLine = [];
+var userScore = 0;
+var compScore = 0;
 
 main();
 
 xplay.addEventListener('click', () => {
 	oplay.disabled = true;
+	xplay.disabled = true;
 	player2 = 'X';
 	player1 = 'O';
 
 	initiateGame(player2, player1);
 	moveCount++;
 	let val = findBestMove(values);
-	//console.log(val);
 	boxes[val].innerHTML = player1;
 	values[val] = player1;
 });
 
 oplay.addEventListener('click', () => {
 	xplay.disabled = true;
+	oplay.disabled = true;
 	player1 = 'X';
 	player2 = 'O';
 	initiateGame(player2, player1);
@@ -82,7 +87,7 @@ function main() {
 					if (moveCount == 9 && winner == '') {
 						winText.innerHTML = 'The game is a Draw';
 					}
-				}, 300);
+				}, 100);
 			}
 		});
 	});
@@ -118,6 +123,12 @@ function getResults() {
 		}
 	}
 	if (winner != '') {
+		if (winner == player2) {
+			userScoreElement.innerHTML = ++userScore;
+		}
+		else {
+			compScoreElement.innerHTML = ++compScore;
+		}
 		win(winLine);
 	}
 }
