@@ -8,8 +8,9 @@ const compScoreElement = document.getElementById('comp-score');
 var boxes = document.querySelectorAll('.box');
 var body = document.querySelector('.game-board');
 
-var player1 = '';
-var player2 = '';
+var user = '';
+var comp = '';
+var first = '';
 var moveCount = 0;
 var values = [];
 var winner = '';
@@ -22,26 +23,35 @@ main();
 xplay.addEventListener('click', () => {
 	oplay.disabled = true;
 	xplay.disabled = true;
-	player2 = 'X';
-	player1 = 'O';
-
-	initiateGame(player2, player1);
-	moveCount++;
-	let val = findBestMove(values);
-	boxes[val].innerHTML = player1;
-	values[val] = player1;
+	user = 'X';
+	comp = 'O';
+	initiateGame(user, comp);
+	first = Math.random() < 0.5 ? comp : user;
+	if (first == comp) {
+		moveCount++;
+		setTimeout(() => {
+			let val = findBestMove(values);
+			boxes[val].innerHTML = comp;
+			values[val] = comp;
+		}, 100);
+	}
 });
 
 oplay.addEventListener('click', () => {
 	xplay.disabled = true;
 	oplay.disabled = true;
-	player1 = 'X';
-	player2 = 'O';
-	initiateGame(player2, player1);
-	moveCount++;
-	let val = findBestMove(values);
-	boxes[val].innerHTML = player1;
-	values[val] = player1;
+	comp = 'X';
+	user = 'O';
+	initiateGame(user, comp);
+	first = Math.random() < 0.5 ? comp : user;
+	if (first == comp) {
+		moveCount++;
+		setTimeout(() => {
+			let val = findBestMove(values);
+			boxes[val].innerHTML = comp;
+			values[val] = comp;
+		}, 100);
+	}
 });
 
 reset.addEventListener('click', () => {
@@ -49,8 +59,9 @@ reset.addEventListener('click', () => {
 		box.innerHTML = '';
 		box.classList.remove('box-win');
 	});
-	player1 = '';
-	player2 = '';
+	comp = '';
+	user = '';
+	first = '';
 	winText.innerHTML = '';
 	xplay.disabled = false;
 	oplay.disabled = false;
@@ -75,19 +86,20 @@ function main() {
 	init();
 	boxes.forEach((box) => {
 		box.addEventListener('click', () => {
-			if (box.innerHTML === '' && player2 != '') {
-				moveCount += 2;
-				box.innerHTML = player2;
-				values[parseInt(box.id)] = player2;
-				setTimeout(() => {
-					let val = findBestMove(values);
-					boxes[val].innerHTML = player1;
-					values[val] = player1;
-					getResults();
-					if (moveCount == 9 && winner == '') {
-						winText.innerHTML = 'The game is a Draw';
-					}
-				}, 100);
+			if (box.innerHTML === '' && user != '') {
+				moveCount++;
+				box.innerHTML = user;
+				values[parseInt(box.id)] = user;
+				getResults();
+				if (winner == '') {
+					moveCount++;
+					setTimeout(() => {
+						let val = findBestMove(values);
+						boxes[val].innerHTML = comp;
+						values[val] = comp;
+						getResults();
+					}, 100);
+				}
 			}
 		});
 	});
@@ -113,6 +125,9 @@ function win(line) {
 }
 
 function getResults() {
+	if (moveCount == 9 && winner == '') {
+		winText.innerHTML = 'The game is a Draw';
+	}
 	winLine = null;
 	for (let i = 0; i < winningLine.length; i++) {
 		let line = winningLine[i];
@@ -123,7 +138,7 @@ function getResults() {
 		}
 	}
 	if (winner != '') {
-		if (winner == player2) {
+		if (winner == user) {
 			userScoreElement.innerHTML = ++userScore;
 		}
 		else {
