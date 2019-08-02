@@ -20,7 +20,7 @@ function findBestMove(currentBoardState) {
 	let bestMove = -1000;
 	let pos = -1;
 	for (let i = 0; i < 9; i++) {
-		if (currentBoardState[i] == undefined || currentBoardState[i] == '') {
+		if (currentBoardState[i] == '' || currentBoardState[i] == '') {
 			currentBoardState[i] = player;
 
 			let val = minimax(currentBoardState, 0, false);
@@ -84,7 +84,7 @@ function checkVictory(currentBoardState) {
 		if (
 			currentBoardState[line[0]] === currentBoardState[line[1]] &&
 			currentBoardState[line[1]] === currentBoardState[line[2]] &&
-			currentBoardState[line[0]] != undefined
+			currentBoardState[line[0]] != ''
 		) {
 			winner = currentBoardState[line[0]];
 			break;

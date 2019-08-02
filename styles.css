@@ -111,6 +111,11 @@ body {
 	padding: 15px 15px;
 }
 
+#turn {
+	font-family: Asap, sans-serif;
+	font-size: 20px;
+}
+
 #left,
 #right {
 	float: left;
@@ -142,19 +147,25 @@ div {
 		width: 300px;
 		height: 300px;
 	}
+
 	.scoreboard {
 		margin: 10px auto;
 		padding: 10px 10px;
 		font-size: 30px;
 	}
+
 	.box {
 		font-size: 3em;
 	}
+
 	.button {
 		display: flex;
 		padding: 10px 10px;
 	}
 
+	#turn {
+		font-size: 15px;
+	}
 	.box:hover {
 		-webkit-user-select: none;
 		-moz-user-select: none;
